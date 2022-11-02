@@ -2,5 +2,7 @@
 Indu Sri Kunuguntla
 
 Class : Flights
-Attributes : FlightName(String),FlightType(String),Price(int)
+
+
+Attributes : FlightName(String) , FlightType(String) , Price(int)
 

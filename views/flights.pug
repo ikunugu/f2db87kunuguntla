@@ -2,4 +2,8 @@ extends layout
 
 block content
   h1= title
-  
+  - var results = [{"flightName": "KLM-Dutch", "flightType": "International", "price": 2500}, {"flightName": "Vistara", "flightType": "Domestic", "price": 2200},{"flightName": "Air-India", "flightType": "International", "price": 2300}]
+    div(class = 'container-fluid')
+      div(class = 'row')
+        each item in results 
+          div(class="col-sm-2") flightName : #{item["flightName"]} <br> flightType : #{item["flightType"]} <br> price: #{item["price"]}

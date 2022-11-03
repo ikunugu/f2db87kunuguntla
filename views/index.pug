@@ -11,7 +11,7 @@ block content
       let count = 0
       let bump = 1
       function doBump(){
-        count = bump
+        count = count + bump
         bump = bump + 1
         document.getElementById('bump').innerHTML = `Count ${count} with bump ${bump}`
       }

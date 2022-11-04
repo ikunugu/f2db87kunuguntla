@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1= title
+  p no of Rows = #{query.rows} and no of columns =  #{query.cols}
+  - var rows = Number(query.rows) 
+  - var cols = Number(query.cols)
+  - if(!Number.isInteger(rows)) {
+      p Enter row value in integer
+  - }
+  - else if(!Number.isInteger(Number(cols))) {
+      p Enter column value in integer
+  - }
+  - else if (!(rows >= 1 && rows <= 10)) {
+      p Enter rows range in 1 to 10
+  - }
+  - else if (!(cols >= 1 && cols <= 10)) {
+      p Enter cols range  in 1 to 10
+  - }
+  - else {
+        table#outer
+            - for(let k = 0; k < rows; k++) {
+                tr#middle 
+                    - for(let j = 0; j < cols; j++) {
+                        td= (1 + k + j * rows)
+                    - }
+            - }
+  - }

@@ -26,3 +26,16 @@ exports.flight_delete = function(req, res) {
 exports.flight_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: flight update PUT' + req.params.id);
 };
+
+// VIEWS
+// Handle a show all view
+exports.flight_view_all_Page = async function(req, res) {
+    try{
+    theFlights = await Flight.find();
+    res.render('flights', { title: 'Flights Search Results', results: theFlights });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };

@@ -14,9 +14,7 @@ mongoose.connect(connectionString,
     useUnifiedTopology: true
   });
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var resourceRouter = require('./routes/resource');
-var flightsRouter = require('./routes/flights');
+
 //Get the default connection
 var db = mongoose.connection;
 //Bind connection to error event
@@ -27,8 +25,11 @@ db.once("open", function () {
 
 var Flight = require("./models/flight");
 
+var usersRouter = require('./routes/users');
+var flightsRouter = require('./routes/flights');
 var gridbuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
+var resourceRouter = require('./routes/resource');
 
 
 var app = express();

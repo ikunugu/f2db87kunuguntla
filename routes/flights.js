@@ -12,4 +12,6 @@ const flight_controlers= require('../controllers/flight');
 var router = express.Router();
 /* GET flights */
 router.get('/', flight_controlers.flight_view_all_Page );
+// GET request for one costume.
+router.get('flight/:id', flight_controlers.flight_detail);
 module.exports = router;

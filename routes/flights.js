@@ -14,4 +14,14 @@ var router = express.Router();
 router.get('/', flight_controlers.flight_view_all_Page );
 // GET request for one costume.
 router.get('flight/:id', flight_controlers.flight_detail);
+
+/* GET detail costume page */
+router.get('/detail', flight_controlers.flight_view_one_Page);
+
+
+
+
+
+
+
 module.exports = router;

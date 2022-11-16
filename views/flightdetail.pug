@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let flightid = toShow._id
+ - let flightName = toShow.flightName
+ - let flightType = toShow.flightType
+ - let price = toShow.price
+ div
+  div.row
+  div(class='flightAttr mr-3') flight ID is:
+  div #{flightid}
+  div.row
+  div(class='flightAttr mr-3') flight Type is:
+  div #{flightName}
+  div.row
+  div(class='flightAttr mr-3') flight Size is:
+  div #{flightType}
+  div.row
+  div(class='flightAttr mr-3') flight Cost is:
+  div #{price}

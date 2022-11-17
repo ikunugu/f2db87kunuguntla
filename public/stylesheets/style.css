@@ -11,3 +11,19 @@ a {
   background-color: aquamarine;
   width: 120px;
  }
+
+
+.data {
+  border-bottom: 2px solid green;
+  height: 30px;
+  color: red;
+  margin-left: 12px;
+}
+
+.detailData {
+  border-bottom: 2px solid green;
+  height: 30px;
+  color: red;
+  margin-left: 12px;
+
+}

@@ -1,0 +1,55 @@
+extends layout 
+
+block content 
+  div(class="container", style='border: 2px solid #001253; width: 450px;')
+    h1(style="text-align: center; color: #432C7A")= title 
+    br
+
+    if (toShow == null) 
+        h2 No instance to delete 
+    else 
+        - let flightid  = toShow._id 
+        - let flightName = toShow.flightName
+        - let flightType = toShow.flightType 
+        - let price  = toShow.price  
+        - let actionid = "/resource/flights/" + flightid 
+        script let actionid = "#{actionid}" 
+        div(class='container' style="text-align: center; width: 450px;")
+            div(class='row mb-3') 
+                div(class='flightAttr col-4') flightid 
+                div(class='data col-6') #{flightid } 
+            div(class='row mb-3') 
+                div(class='flightAttr col-4') flightName 
+                div(class='data col-6') #{flightName} 
+            div(class='row mb-3') 
+                div(class='flightAttr col-4') flightType
+                div(class='data col-6') #{flightType} 
+            div(class='row mb-3') 
+                div(class='flightAttr col-4') price 
+                div(class='data col-6') #{price } 
+
+            button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+            button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+
+  script. 
+    function cancel() { 
+      // Go back to the home page for the costume collection 
+      window.location.href='/flights' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      // Dont need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/flights' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    }

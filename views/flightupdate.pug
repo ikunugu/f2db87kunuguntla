@@ -1,0 +1,48 @@
+extends layout 
+
+block content 
+  div.container(style='border: 2px solid #001253; width: 450px;')
+    h1(style="text-align: center; color: red;")= title 
+    br
+    - let flightid = toShow._id
+    - let flightName = toShow.flightName 
+    - let flightType = toShow.flightType 
+    - let price  = toShow.price 
+
+    div(class='container' style="text-align: center; width: 450px;")
+      div.row(class='mb-2') 
+        div(class='birdAttr col-4') ID is 
+        div(class='data col-6') #{flightid} 
+      - let actionid = "/resource/bird/" + flightid
+      form(id='flightForm', action=actionid, method="PUT") 
+        div(class="form-group row mb-2") 
+            label.birdAttr(for='flightName', class='col-4 col-from-label') flightName 
+            div(class='col-6' style='width: 250px;')
+              input#flightName(class='form-control', type='text', name='flightName', value=`${flightName}`) 
+        div(class="form-group row mb-2") 
+            label.birdAttr(for='flightType', class='col-4 col-from-label') flightType
+            div(class='col-6' style='width: 250px;') 
+              input#flightType(class='form-control', type='text', name='flightType', step='any', value=`${flightType}`) 
+        div(class="form-group row mb-2") 
+            label.birdAttr(for='price ', class='col-4 col-from-label') price 
+            div(class='col-6' style='width: 250px;')
+              input#price(class='form-control' ,type='number', name='price ', value=`${price }`) 
+        input(class='btn btn-success' type="submit" style='width: 150px; margin: 6px;') 
+ 
+  script. 
+    document.forms['flightForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    });

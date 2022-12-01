@@ -3,16 +3,20 @@ extends layout
 block content
   div(class='container')
         h1(style="text-align: center; color: #863A6F")= title
-        - var results = results
+        - var items = results
         div(class='container' style="text-align: center;")  
             div.row 
                 each item, index in results
                     div(class='col-md')
-                        div(class='card', style='width: 16rem;')
+                        div(class='card', style='width: 17rem;')
                             div(class='card-body')
-                                - let destination = `dispatch(\"/flight/update?id=${item._id}\")`
+                                - let destination = `dispatch(\"/flights/update?id=${item._id}\")`
+                                - let destinationdelete = `dispatch(\"/flights/delete?id=${item._id}\")`
+                                - let destinationdetail = `dispatch(\"/flights/detail?id=${item._id}\")`
                                 div(class='card-text', onclick=`buy(${index})`) flightName : #{item["flightName"]} <br> flightType : #{item["flightType"]} <br> price: #{item["price"]}
-                                button.btn(class="btn-warning btn-sm ml-1", style="margin: 5px; width: 130px;", onclick= destination) Update
+                                button.btn(class="btn-primary btn-sm ml-1", style="margin: 5px; width: 130px;", onclick= destination) Update
+                                button.btn( class="btn-primary ml-1", style="margin: 5px; width: 130px;", onclick= destinationdelete) Delete
+                                button.btn( class="btn-primary ml-1", style="margin: 5px; width: 130px;", onclick= destinationdetail) Detail
   script.
       function buy(index){
          alert("you purchased item "+(index+1))
@@ -20,16 +24,4 @@ block content
       function dispatch(path) {
             window.location.href = path;
       }
-      passport.use(new LocalStrategy(
-      function(username, password, done) {
-      Account.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-      return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-      return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-      });
-      }
+      

@@ -11,20 +11,20 @@ block content
 
     div(class='container' style="text-align: center; width: 450px;")
       div.row(class='mb-2') 
-        div(class='birdAttr col-4') ID is 
+        div(class='flightAttr col-4') ID is 
         div(class='data col-6') #{flightid} 
-      - let actionid = "/resource/bird/" + flightid
+      - let actionid = "/resource/flight/" + flightid
       form(id='flightForm', action=actionid, method="PUT") 
         div(class="form-group row mb-2") 
-            label.birdAttr(for='flightName', class='col-4 col-from-label') flightName 
+            label.flightAttr(for='flightName', class='col-4 col-from-label') flightName 
             div(class='col-6' style='width: 250px;')
               input#flightName(class='form-control', type='text', name='flightName', value=`${flightName}`) 
         div(class="form-group row mb-2") 
-            label.birdAttr(for='flightType', class='col-4 col-from-label') flightType
+            label.flightAttr(for='flightType', class='col-4 col-from-label') flightType
             div(class='col-6' style='width: 250px;') 
               input#flightType(class='form-control', type='text', name='flightType', step='any', value=`${flightType}`) 
         div(class="form-group row mb-2") 
-            label.birdAttr(for='price ', class='col-4 col-from-label') price 
+            label.flightAttr(for='price ', class='col-4 col-from-label') price 
             div(class='col-6' style='width: 250px;')
               input#price(class='form-control' ,type='number', name='price ', value=`${price }`) 
         input(class='btn btn-success' type="submit" style='width: 150px; margin: 6px;') 
